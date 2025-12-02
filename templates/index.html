@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Recipe Exchange{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-3">
+            <i class="fas fa-utensils me-3"></i>Welcome to Recipe Exchange
+        </h1>
+        <p class="lead mb-4">Discover, share, and enjoy amazing recipes from around the world</p>
+        {% if not current_user.is_authenticated %}
+        <div class="mt-4">
+            <a href="{{ url_for('auth.register') }}" class="btn btn-light btn-lg me-3">
+                <i class="fas fa-user-plus me-2"></i>Join Our Community
+            </a>
+            <a href="{{ url_for('recipes.index') }}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-search me-2"></i>Browse Recipes
+            </a>
+        </div>
+        {% else %}
+        <div class="mt-4">
+            <a href="{{ url_for('recipes.create') }}" class="btn btn-light btn-lg me-3">
+                <i class="fas fa-plus-circle me-2"></i>Share Your Recipe
+            </a>
+            <a href="{{ url_for('recipes.index') }}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-book me-2"></i>Explore Recipes
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container">
+    <!-- Featured Recipes -->
+    {% if featured_recipes %}
+    <section class="mb-5">
+        <div class="d-flex align-items-center mb-4">
+            <h2 class="mb-0"><i class="fas fa-star text-warning me-2"></i>Featured Recipes</h2>
+            <a href="{{ url_for('recipes.index') }}" class="btn btn-outline-primary ms-auto">
+                View All <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+        
+        <div class="row">
+            {% for recipe in featured_recipes %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm recipe-card">
+                    {% if recipe.image %}
+                    <img src="{{ url_for('static', filename='uploads/' + recipe.image) }}" 
+                         class="card-img-top recipe-image" alt="{{ recipe.title }}">
+                    {% else %}
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-utensils fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <p class="card-text text-muted">{{ recipe.description[:100] }}{{ '...' if recipe.description|length > 100 }}</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>{{ recipe.author.username }}
+                            </small>
+                            <div class="rating">
+                                {% for i in range(1, 6) %}
+                                    {% if i <= recipe.get_average_rating() %}
+                                        <i class="fas fa-star text-warning"></i>
+                                    {% else %}
+                                        <i class="far fa-star text-warning"></i>
+                                    {% endif %}
+                                {% endfor %}
+                                <small class="ms-1">({{ recipe.ratings|length }})</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-2">
+                            <small class="text-muted">
+                                <i class="fas fa-clock me-1"></i>{{ recipe.get_total_time() }} min
+                                <i class="fas fa-users ms-2 me-1"></i>{{ recipe.servings }} servings
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer bg-transparent">
+                        <a href="{{ url_for('recipes.view', id=recipe.id) }}" class="btn btn-primary w-100">
+                            <i class="fas fa-eye me-1"></i>View Recipe
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Recent Recipes -->
+    {% if recent_recipes %}
+    <section class="mb-5">
+        <div class="d-flex align-items-center mb-4">
+            <h2 class="mb-0"><i class="fas fa-clock text-success me-2"></i>Latest Recipes</h2>
+            <a href="{{ url_for('recipes.index') }}" class="btn btn-outline-success ms-auto">
+                View All <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+        
+        <div class="row">
+            {% for recipe in recent_recipes %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm recipe-card">
+                    {% if recipe.image %}
+                    <img src="{{ url_for('static', filename='uploads/' + recipe.image) }}" 
+                         class="card-img-top recipe-image" alt="{{ recipe.title }}">
+                    {% else %}
+                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <i class="fas fa-utensils fa-3x text-muted"></i>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <p class="card-text text-muted">{{ recipe.description[:100] }}{{ '...' if recipe.description|length > 100 }}</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>{{ recipe.author.username }}
+                            </small>
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>{{ recipe.created_at.strftime('%b %d') }}
+                            </small>
+                        </div>
+                        
+                        <div class="mt-2">
+                            <span class="badge bg-primary">{{ recipe.category.name }}</span>
+                            <span class="badge bg-secondary">{{ recipe.difficulty }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer bg-transparent">
+                        <a href="{{ url_for('recipes.view', id=recipe.id) }}" class="btn btn-success w-100">
+                            <i class="fas fa-eye me-1"></i>View Recipe
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Categories Quick Access -->
+    <section class="mb-5">
+        <h2 class="mb-4"><i class="fas fa-list text-info me-2"></i>Browse by Category</h2>
+        <div class="row">
+            {% for category in categories[:8] %}
+            <div class="col-md-3 col-sm-6 mb-3">
+                <a href="{{ url_for('main.category_recipes', category_id=category.id) }}" 
+                   class="btn btn-outline-info w-100 py-3 category-btn">
+                    <div>
+                        <strong>{{ category.name }}</strong><br>
+                        <small>{{ category.recipe_count() }} recipes</small>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if categories|length > 8 %}
+        <div class="text-center mt-4">
+            <a href="{{ url_for('main.categories') }}" class="btn btn-info">
+                View All Categories <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+        {% endif %}
+    </section>
+
+    <!-- Call to Action -->
+    <section class="text-center py-5 bg-light rounded mb-5">
+        <h3 class="mb-3">Ready to Share Your Culinary Creations?</h3>
+        <p class="lead text-muted mb-4">Join thousands of home cooks sharing their favorite recipes</p>
+        {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg me-3">
+            <i class="fas fa-user-plus me-2"></i>Sign Up Free
+        </a>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary btn-lg">
+            <i class="fas fa-sign-in-alt me-2"></i>Login
+        </a>
+        {% else %}
+        <a href="{{ url_for('recipes.create') }}" class="btn btn-primary btn-lg">
+            <i class="fas fa-plus-circle me-2"></i>Add Your First Recipe
+        </a>
+        {% endif %}
+    </section>
+</div>
+
+<style>
+.recipe-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.category-btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.category-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.rating .fas, .rating .far {
+    font-size: 0.9rem;
+}
+</style>
+{% endblock %}
