@@ -1,15 +1,239 @@
 /* Recipe Exchange Custom Styles */
 
+/* Bootstrap Color Overrides - Sophisticated Muted Palette */
+:root {
+    --bs-primary: #73877B !important;
+    --bs-primary-rgb: 115, 135, 123 !important;
+    --bs-secondary: #839788 !important;
+    --bs-secondary-rgb: 131, 151, 136 !important;
+    --bs-success: #73877B !important;
+    --bs-success-rgb: 115, 135, 123 !important;
+    --bs-warning: #E5D1D0 !important;
+    --bs-warning-rgb: 229, 209, 208 !important;
+    --bs-info: #839788 !important;
+    --bs-info-rgb: 131, 151, 136 !important;
+    --bs-danger: #73877B !important;
+    --bs-danger-rgb: 115, 135, 123 !important;
+    --bs-light: #F5E4D7 !important;
+    --bs-light-rgb: 245, 228, 215 !important;
+    --bs-dark: #73877B !important;
+    --bs-dark-rgb: 115, 135, 123 !important;
+    
+    /* Custom sophisticated theme colors */
+    --dusty-olive: #73877B;
+    --muted-teal: #839788;
+    --silver: #BDBBB6;
+    --soft-blush: #E5D1D0;
+    --powder-petal: #F5E4D7;
+}
+
+/* Enhanced Button Overrides */
+.btn-primary {
+    background: linear-gradient(135deg, var(--dusty-olive) 0%, var(--muted-teal) 100%) !important;
+    border: none !important;
+    box-shadow: 0 3px 12px rgba(115, 135, 123, 0.3) !important;
+    transition: all 0.3s ease !important;
+    color: white !important;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: linear-gradient(135deg, var(--muted-teal) 0%, var(--dusty-olive) 100%) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(115, 135, 123, 0.4) !important;
+    border-color: var(--muted-teal) !important;
+    color: white !important;
+}
+
+.btn-secondary {
+    background: rgba(245, 228, 215, 0.9) !important;
+    border: 2px solid var(--dusty-olive) !important;
+    color: var(--dusty-olive) !important;
+    font-weight: 600 !important;
+}
+
+.btn-secondary:hover {
+    background: white !important;
+    color: var(--dusty-olive) !important;
+    border-color: var(--muted-teal) !important;
+}
+
+.btn-outline-primary {
+    border-color: var(--dusty-olive) !important;
+    color: var(--dusty-olive) !important;
+    background: transparent !important;
+}
+
+.btn-outline-primary:hover {
+    background: var(--dusty-olive) !important;
+    border-color: var(--dusty-olive) !important;
+    color: white !important;
+}
+
+.btn-outline-light {
+    border-color: rgba(255,255,255,0.8) !important;
+    color: white !important;
+    background: rgba(255,255,255,0.1) !important;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255,255,255,0.2) !important;
+    border-color: white !important;
+    color: white !important;
+}
+
+.btn-outline-light {
+    border-color: rgba(255,255,255,0.5);
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: white;
+    color: white;
+}
+
+/* Additional button overrides */
+.btn-info {
+    background: linear-gradient(135deg, var(--brandy) 0%, var(--molten-lava) 100%);
+    border: none;
+    color: white;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, var(--molten-lava) 0%, var(--bronze-spice) 100%);
+    color: white;
+}
+
+.btn-outline-info {
+    border-color: var(--brandy);
+    color: var(--brandy);
+}
+
+.btn-outline-info:hover {
+    background: var(--brandy);
+    border-color: var(--brandy);
+    color: white;
+}
+
+/* Override any remaining Bootstrap default buttons */
+.btn:not(.btn-outline-light):not(.btn-outline-primary):not(.btn-outline-secondary):not(.btn-outline-success):not(.btn-outline-warning):not(.btn-outline-danger):not(.btn-outline-info):not(.btn-outline-dark) {
+    background: linear-gradient(135deg, var(--bronze-spice) 0%, var(--autumn-ember) 100%);
+    border: none;
+    color: white;
+}
+
+.btn:not(.btn-outline-light):not(.btn-outline-primary):not(.btn-outline-secondary):not(.btn-outline-success):not(.btn-outline-warning):not(.btn-outline-danger):not(.btn-outline-info):not(.btn-outline-dark):hover {
+    background: linear-gradient(135deg, var(--autumn-ember) 0%, var(--brandy) 100%);
+    color: white;
+}
+
+/* Bootstrap Blue Button Overrides */
+.btn-primary,
+.btn[style*="background-color: #0d6efd"],
+.btn[class*="btn-primary"] {
+    background: linear-gradient(135deg, var(--bronze-spice) 0%, var(--autumn-ember) 100%) !important;
+    border-color: var(--bronze-spice) !important;
+    color: white !important;
+}
+
+.btn-info,
+.btn[class*="btn-info"] {
+    background: linear-gradient(135deg, var(--light-caramel) 0%, var(--bronze-spice) 100%) !important;
+    border-color: var(--light-caramel) !important;
+    color: white !important;
+}
+
+/* Force override any blue colors */
+.text-info {
+    color: var(--bronze-spice) !important;
+}
+
+.bg-info {
+    background: var(--light-caramel) !important;
+}
+
+.border-info {
+    border-color: var(--light-caramel) !important;
+}
+
 /* Global Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: #f8f9fa;
+    background-color: var(--powder-petal);
+    color: var(--dusty-olive);
 }
 
 /* Navigation */
 .navbar-brand {
     font-size: 1.5rem;
+    font-weight: 700;
+    text-shadow: none;
+    color: var(--dusty-olive) !important;
+}
+
+.navbar-dark {
+    background: linear-gradient(135deg, var(--dusty-olive) 0%, var(--muted-teal) 100%) !important;
+    box-shadow: 0 3px 15px rgba(115, 135, 123, 0.4);
+    border-bottom: 3px solid var(--dusty-olive);
+}
+
+.navbar-nav .nav-link {
+    color: var(--dusty-olive) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 0 4px;
+    padding: 8px 12px !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--muted-teal) !important;
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-1px);
+}
+
+.navbar-brand {
+    color: var(--dusty-olive) !important;
+}
+
+/* Footer text */
+.bg-dark {
+    background: linear-gradient(135deg, var(--dusty-olive) 0%, var(--muted-teal) 100%) !important;
+    color: var(--dusty-olive) !important;
+}
+
+/* Footer text visibility */
+.bg-dark * {
+    color: var(--dusty-olive) !important;
+}
+
+.bg-dark .text-danger {
+    color: #dc3545 !important;
+}
+
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.3);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.2);
+}
+
+.dropdown-menu {
+    background: var(--warm-white);
+    border: 1px solid var(--light-caramel);
+    box-shadow: 0 5px 20px rgba(202, 83, 16, 0.2);
+}
+
+.dropdown-item {
+    color: var(--bronze-spice);
+    transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: var(--light-caramel);
+    color: white;
 }
 
 /* Recipe Cards */
@@ -18,12 +242,15 @@ body {
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(115, 135, 123, 0.15);
+    background: white;
+    border: 1px solid rgba(115, 135, 123, 0.1);
 }
 
 .recipe-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 30px rgba(115, 135, 123, 0.25);
+    border-color: var(--soft-blush);
 }
 
 .recipe-image {
@@ -36,6 +263,20 @@ body {
     transform: scale(1.05);
 }
 
+.card-title {
+    color: var(--dusty-olive);
+    font-weight: 600;
+}
+
+.card-text {
+    color: var(--muted-teal);
+}
+
+.card-footer {
+    background: rgba(245, 228, 215, 0.5) !important;
+    border-top: 1px solid rgba(115, 135, 123, 0.1);
+}
+
 /* Ratings */
 .rating {
     display: flex;
@@ -44,20 +285,419 @@ body {
 
 .rating .fa-star {
     cursor: pointer;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+    color: var(--silver);
 }
 
 .rating .fa-star:hover {
     transform: scale(1.1);
+    color: var(--dusty-olive);
+}
+
+.rating .fas.fa-star {
+    color: var(--dusty-olive);
+}
+
+.rating .far.fa-star {
+    color: var(--silver);
+}
+
+/* Forms */
+.form-control {
+    border-radius: 10px;
+    border: 2px solid rgba(115, 135, 123, 0.2);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--dusty-olive);
+    box-shadow: 0 0 0 0.2rem rgba(115, 135, 123, 0.15);
+}
+
+.form-floating > .form-control:focus ~ label {
+    color: var(--dusty-olive);
+}
+
+/* Category Buttons */
+.category-btn {
+    background: linear-gradient(135deg, var(--dusty-olive) 0%, var(--muted-teal) 100%) !important;
+    border: 2px solid var(--dusty-olive) !important;
+    color: white !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-btn * {
+    color: white !important;
+}
+
+.category-btn strong {
+    color: white !important;
+}
+
+.category-btn small {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.category-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(115, 135, 123, 0.3);
+    background: linear-gradient(135deg, var(--muted-teal) 0%, var(--dusty-olive) 100%) !important;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+.category-btn:hover * {
+    color: white !important;
+}
+
+/* Ensure button text is always visible */
+.btn, .category-btn {
+    text-shadow: none !important;
+}
+
+/* View All Categories button fix */
+.btn-info, .btn[class*="btn-info"] {
+    background: linear-gradient(135deg, var(--dusty-olive) 0%, var(--muted-teal) 100%) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, var(--muted-teal) 0%, var(--dusty-olive) 100%) !important;
+    color: white !important;
+}
+
+/* Card text improvements */
+.card {
+    background: white !important;
+    color: var(--dusty-olive) !important;
+}
+
+.card * {
+    color: var(--dusty-olive) !important;
+}
+
+.card .text-muted {
+    color: var(--muted-teal) !important;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 12px;
+    border: none;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, rgba(251, 186, 114, 0.2) 0%, rgba(202, 83, 16, 0.1) 100%);
+    color: var(--bronze-spice);
+    border-left: 4px solid var(--bronze-spice);
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, rgba(105, 30, 6, 0.1) 0%, rgba(105, 30, 6, 0.05) 100%);
+    color: var(--molten-lava);
+    border-left: 4px solid var(--molten-lava);
+}
+
+/* Badges */
+.badge {
+    border-radius: 20px;
+    font-weight: 500;
+    padding: 6px 12px;
+}
+
+.badge.bg-primary {
+    background: var(--dusty-olive) !important;
+}
+
+.badge.bg-secondary {
+    background: var(--light-caramel) !important;
+    color: var(--brandy) !important;
+}
+
+/* Modern Enhancements */
+.text-warning {
+    color: var(--bronze-spice) !important;
+}
+
+.border-primary {
+    border-color: var(--bronze-spice) !important;
+}
+
+.text-primary {
+    color: var(--bronze-spice) !important;
+}
+
+.text-secondary {
+    color: var(--brandy) !important;
+}
+
+/* Link Colors */
+a {
+    color: var(--bronze-spice);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--autumn-ember);
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .recipe-card {
+        margin-bottom: 20px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
 }
 
 /* Interactive Recipe Scaling */
+.category-btn {
+    background: linear-gradient(135deg, var(--light-caramel) 0%, var(--bronze-spice) 100%);
+    border: 2px solid var(--light-caramel);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.category-btn:hover::before {
+    left: 100%;
+}
+
+.category-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(202, 83, 16, 0.3);
+    background: linear-gradient(135deg, var(--bronze-spice) 0%, var(--autumn-ember) 100%);
+    color: white;
+}
+
+/* Search Form */
+.navbar .form-control {
+    background: rgba(255,255,255,0.9);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: var(--dusty-olive);
+}
+
+.navbar .form-control:focus {
+    background: white;
+    border-color: white;
+    box-shadow: 0 0 0 0.2rem rgba(255,255,255,0.2);
+}
+
+.navbar .form-control::placeholder {
+    color: var(--dusty-olive);
+    opacity: 0.8;
+}
+
+/* Footer */
+.bg-dark {
+    background: linear-gradient(135deg, var(--dusty-olive) 0%, var(--muted-teal) 100%) !important;
+    color: var(--dusty-olive) !important;
+}
+
+/* Footer text visibility */
+.bg-dark * {
+    color: var(--dusty-olive) !important;
+}
+
+.bg-dark .text-danger {
+    color: #dc3545 !important;
+}
+
+/* Hero Section Enhancement */
+.bg-primary {
+    background: linear-gradient(135deg, var(--dusty-olive) 0%, var(--muted-teal) 100%) !important;
+    color: var(--dusty-olive) !important;
+}
+
+/* Hero section text visibility */
+.bg-primary * {
+    color: var(--dusty-olive) !important;
+}
+
+.bg-primary h1, .bg-primary p, .bg-primary span {
+    color: var(--dusty-olive) !important;
+}
+
+.bg-primary .btn {
+    color: var(--dusty-olive) !important;
+    background: rgba(245, 228, 215, 0.95) !important;
+    border: 2px solid var(--dusty-olive) !important;
+    font-weight: 600 !important;
+}
+
+.bg-primary .btn:hover {
+    background: white !important;
+    color: var(--dusty-olive) !important;
+    border-color: var(--dusty-olive) !important;
+}
+
+/* Modern Enhancements */
+.text-primary {
+    color: var(--dusty-olive) !important;
+}
+
+.text-secondary {
+    color: var(--muted-teal) !important;
+}
+
+.text-warning {
+    color: var(--dusty-olive) !important;
+}
+
+/* Badges */
+.badge.bg-primary {
+    background: var(--dusty-olive) !important;
+}
+
+.badge.bg-secondary {
+    background: var(--soft-blush) !important;
+    color: var(--dusty-olive) !important;
+}
+
+/* Alerts */
+.alert-success {
+    background: linear-gradient(135deg, rgba(245, 228, 215, 0.3) 0%, rgba(229, 209, 208, 0.2) 100%);
+    color: var(--dusty-olive);
+    border-left: 4px solid var(--dusty-olive);
+}
+
+/* Links */
+a {
+    color: var(--dusty-olive);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--muted-teal);
+}
+
+/* Red heart styling */
+.fa-heart,
+.text-danger {
+    color: #dc3545 !important;
+}
+
+/* Text visibility improvements */
+.text-white {
+    color: white !important;
+}
+
+.text-light {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Category section text */
+h2, h3, h4, h5, h6 {
+    color: var(--dusty-olive) !important;
+}
+
+/* Ensure text is visible on light backgrounds */
+p, span, div {
+    color: var(--dusty-olive);
+}
+
+/* Override any white text on light backgrounds */
+.bg-light, .bg-white, .card-body {
+    color: var(--dusty-olive) !important;
+}
+
+.bg-light *, .bg-white *, .card-body * {
+    color: var(--dusty-olive) !important;
+}
+
+/* Main content area text visibility */
+.container, .container-fluid {
+    color: var(--dusty-olive) !important;
+}
+
+/* Section headers and content */
+section h2, section h3, section p {
+    color: var(--dusty-olive) !important;
+}
+
+/* Call to action section */
+.text-center h3 {
+    color: var(--dusty-olive) !important;
+}
+
+.text-center p {
+    color: var(--muted-teal) !important;
+}
+
+/* Browse category section */
+.browse-section h2 {
+    color: var(--dusty-olive) !important;
+}
+
+/* Any remaining white text on light backgrounds */
+*:not(.bg-primary):not(.bg-dark):not(.navbar):not(.category-btn) {
+    color: var(--dusty-olive);
+}
 .recipe-scaling {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--bronze-spice) 0%, var(--autumn-ember) 100%);
     color: white;
     border-radius: 15px;
-    padding: 20px;
-    margin: 20px 0;
+    padding: 25px;
+    margin: 25px 0;
+    box-shadow: 0 6px 25px rgba(202, 83, 16, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.recipe-scaling::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
 }
 
 .serving-controls {
@@ -395,4 +1035,72 @@ body {
         box-shadow: none;
         border: 1px solid #ddd;
     }
+}
+
+/* Final Color Overrides for Sophisticated Palette */
+.category-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(115, 135, 123, 0.3);
+    background: linear-gradient(135deg, var(--dusty-olive) 0%, var(--muted-teal) 100%) !important;
+    color: white !important;
+}
+
+.navbar .form-control {
+    color: var(--dusty-olive) !important;
+}
+
+.navbar .form-control::placeholder {
+    color: rgba(115, 135, 123, 0.7) !important;
+}
+
+/* Ensure consistent background */
+html, body, main, .container, .container-fluid {
+    background-color: #F5E4D7 !important;
+}
+
+/* Comprehensive Text Color Override for All Specified Elements */
+/* Hero section text - Welcome to Recipe Exchange, Recipe Exchange, Share your favorite recipes */
+.jumbotron h1, .hero h1, .bg-primary h1,
+.jumbotron .display-4, .hero .display-4, .bg-primary .display-4,
+.jumbotron p, .hero p, .bg-primary p,
+.jumbotron .lead, .hero .lead, .bg-primary .lead {
+    color: var(--dusty-olive) !important;
+}
+
+/* Navigation brand and links - Recipe Exchange, Home, All Recipes, Categories */
+.navbar-brand, .navbar-brand:hover, .navbar-brand:focus,
+.navbar-nav .nav-link, .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus,
+.navbar-text {
+    color: var(--dusty-olive) !important;
+}
+
+/* Footer text - © 2024 Recipe Exchange, Made with love for food lovers */
+.bg-dark, .bg-dark p, .bg-dark small, .bg-dark span,
+footer, footer p, footer small, footer span {
+    color: var(--dusty-olive) !important;
+}
+
+/* Search placeholder - Search recipes... */
+.form-control::placeholder,
+.navbar .form-control::placeholder,
+input[placeholder*="Search"]::placeholder,
+input[placeholder*="search"]::placeholder {
+    color: var(--dusty-olive) !important;
+    opacity: 0.8 !important;
+}
+
+/* Auth links - Login, Register */
+.nav-link[href*="login"], .nav-link[href*="register"],
+.btn-outline-light, .btn-outline-secondary {
+    color: var(--dusty-olive) !important;
+}
+
+/* General text elements that should be dusty olive */
+h1, h2, h3, h4, h5, h6, p, span, a, .text-dark {
+    color: var(--dusty-olive) !important;
+}
+
+/* Keep hearts red */
+.fa-heart, .text-danger {
+    color: #dc3545 !important;
 }
